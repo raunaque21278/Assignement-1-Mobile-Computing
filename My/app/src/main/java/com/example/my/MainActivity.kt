@@ -142,7 +142,7 @@ class MainActivity : ComponentActivity() {
     fun ProgressforDistance(limitedCount: Int) {
         val progress = limitedCount / 20f
         val percentage = (progress * 100).toInt()
-
+        val cappedProgress = progress.coerceIn(0f, 1f)
         Column {
             LinearProgressIndicator(
                 progress = progress,
@@ -151,7 +151,7 @@ class MainActivity : ComponentActivity() {
                     .padding(horizontal = 20.dp)
                     .height(12.dp)
             )
-
+            val percentage = (cappedProgress * 100).toInt()
             Text(
                 text = "Covered: $percentage%",
                 modifier = Modifier.padding(top = 4.dp, start = 20.dp)
